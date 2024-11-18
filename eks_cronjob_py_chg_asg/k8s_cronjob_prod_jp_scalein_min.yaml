@@ -1,9 +1,24 @@
-# meeting_demo
-
-# Folder : eks_cronjob_py_chg_asg , implement EKS 尖峰 / 離峰時間的 ASG node 數量
-
-```
-# 修改 Yaml 中的env ， 控制eks node group node 數量，還有告警通知slack 
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob-asg-jp-node-min
+  namespace: monitoring
+spec:
+  concurrencyPolicy: Forbid
+  schedule: '0 05 * * *'
+  jobTemplate:
+    spec:
+      backoffLimit: 2
+      activeDeadlineSeconds: 600
+      template:
+        spec:
+          serviceAccountName: sa-account
+          restartPolicy: Never
+          containers:
+            - name: set-eks-asg-node-min
+              image: xxxxxxxxxxxx.dkr.ecr.ap-southeast-1.amazonaws.com/cronjob-chg-asg:latest
+              imagePullPolicy: Always
               env:
               - name: DESIRED_CAPACITY
                 value: "10"
@@ -23,5 +38,4 @@
                 value: "17"
               - name: MINI_NODE
                 value: "10"
-```
 
