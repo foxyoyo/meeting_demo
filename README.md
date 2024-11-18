@@ -1,7 +1,7 @@
-# meeting_demo
+# demo
 
-- Folder : eks_cronjob_py_chg_asg , implement EKS 尖峰 / 離峰時間的 ASG node 數量
-1. 修改 Yaml 中的env ， 控制eks node group node 數量，還有告警通知slack
+# - Folder : eks_cronjob_py_chg_asg , implement EKS 尖峰 / 離峰時間的 ASG node 數量
+- 修改 Yaml 中的env ， 控制eks node group node 數量，還有告警通知slack
 
 ``` 
               env:
@@ -25,8 +25,8 @@
                 value: "10"
 ```
 
-- Folder : check_ip_range , 快速檢查某個ip 隸屬哪段既有infra subnet 
-1. 修改IP_list ，把要作資產清查的ip 填入，執行 './check_IP_range.sh -c "subnet/mask" -f {file path of ip list }'
+# Folder : check_ip_range , 快速檢查某個ip 隸屬哪段既有infra subnet 
+- 修改IP_list ，把要作資產清查的ip 填入，執行 './check_IP_range.sh -c "subnet/mask" -f {file path of ip list }'
 > Pre-required:
 >>1. 透過 grepcidr 套件 (https://formulae.brew.sh/formula/grepcidr)
 ```
