@@ -1,6 +1,6 @@
 # demo
 
-# - Folder : eks_cronjob_py_chg_asg , implement EKS 尖峰 / 離峰時間的 ASG node 數量
+# Folder : eks_cronjob_py_chg_asg , implement EKS 尖峰 / 離峰時間的 ASG node 數量
 - 修改 Yaml 中的env ， 控制eks node group node 數量，還有告警通知slack
 
 ``` 
@@ -23,6 +23,18 @@
                 value: "17"
               - name: MINI_NODE
                 value: "10"
+```
+
+# Folder : athena_slack , 自己撰寫的python flask api 小工具，用於透過slack BOT 介面，可以快速得知目前prod 環境WAF 狀況，可以產出report / block ip /query status 
+- 透過 help 可以取得指令參數
+
+``` 
+help # get all parameter 
+show alarms
+show iamdeny
+show xx_waf
+show xx_topip
+block_ip x-x-x-x
 ```
 
 # Folder : check_ip_range , 快速檢查某個ip 隸屬哪段既有infra subnet 
