@@ -1,10 +1,9 @@
 # meeting_demo
 
 - Folder : eks_cronjob_py_chg_asg , implement EKS 尖峰 / 離峰時間的 ASG node 數量
-1.
+1. 修改 Yaml 中的env ， 控制eks node group node 數量，還有告警通知slack
 
-```
-# 修改 Yaml 中的env ， 控制eks node group node 數量，還有告警通知slack 
+``` 
               env:
               - name: DESIRED_CAPACITY
                 value: "10"
