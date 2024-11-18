@@ -36,6 +36,9 @@ show xx_waf
 show xx_topip
 block_ip x-x-x-x
 ```
+![image](https://github.com/foxyoyo/meeting_demo/blob/master/athena_slack/help.png)
+![image](https://github.com/foxyoyo/meeting_demo/blob/master/athena_slack/slack1.png)
+![image](https://github.com/foxyoyo/meeting_demo/blob/master/athena_slack/slack2.png)
 
 # Folder : check_ip_range , 快速檢查某個ip 隸屬哪段既有infra subnet 
 - 修改IP_list ，把要作資產清查的ip 填入，執行 './check_IP_range.sh -c "subnet/mask" -f {file path of ip list }'
