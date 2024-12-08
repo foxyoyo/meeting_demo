@@ -1,13 +1,13 @@
 # Metrics Alarm for TargetGroup
 
 
-sns-topic = "arn:aws:sns:ap-northeast-1:xxxxxxxxxx:h2-p-kr-alarm"
+sns-topic = "arn:aws:sns:ap-northeast-1:xxxxxxxxxx:test-p-kr-alarm"
 
 
 ### Metrics Alarm
 # TargetGroup Block #
 cw_alarms = {
-  p-tg-responsetime-k8s-prod-h2s-api-st = {
+  p-tg-responsetime-k8s-test-xxxx-api-st = {
     comparison_operator = "GreaterThanThreshold"
     evaluation_periods = 3
     datapoints_to_alarm = 2
@@ -16,12 +16,12 @@ cw_alarms = {
     period              = 60
     statistic           = "Average"
     threshold           = 5
-    alarm_description   = "Target Response Time for monitor TG:k8s-prod-h2s-api-st"
+    alarm_description   = "Target Response Time for monitor TG:k8s-test-xxxx-api-st"
     treat_missing_data  = "notBreaching"
-    LoadBalancer = "app/h2-server-lb/489712807999a451"                                                                                             
-    TargetGroup = "targetgroup/k8s-prod-h2s-api-st/55098ae1f4c7af0a"
+    LoadBalancer = "app/test-server-lb/xxxxxxx"                                                                                             
+    TargetGroup = "targetgroup/k8s-test-xxxx-api-st/55098ae1f4c7af0a"
   },
-  p-tg-responsetime-k8s-prod-h2s-wellness-st = {
+  p-tg-responsetime-k8s-test-xxxx-wellness-st = {
     comparison_operator = "GreaterThanThreshold"
     evaluation_periods = 5
     datapoints_to_alarm = 3
@@ -30,10 +30,10 @@ cw_alarms = {
     period              = 60
     statistic           = "Average"
     threshold           = 5
-    alarm_description   = "Target Response Time for monitor TG:k8s-prod-wellness-st"
+    alarm_description   = "Target Response Time for monitor TG:k8s-test-wellness-st"
     treat_missing_data  = "notBreaching"
-    LoadBalancer = "app/h2-server-lb/489712807999a451"                                                                                             
-    TargetGroup = "targetgroup/k8s-prod-h2s-wellness-st/63e2bf8bdd333c8d"
+    LoadBalancer = "app/test-server-lb/xxxxxxx"                                                                                             
+    TargetGroup = "targetgroup/k8s-test-xxxx-wellness-st/63e2bf8bdd333c8d"
   },
 # WaF Rule Block 
   p-waf-CrossSiteScript_Body = {
@@ -49,7 +49,7 @@ cw_alarms = {
     treat_missing_data  = "notBreaching"
     Rule   = "CrossSiteScripting_BODY"                                                                                      
     Region = "ap-northeast-2"
-    WebACL = "PROD-WAF-ACL"   
+    WebACL = "test-WAF-ACL"   
   },
 # Redis Node Block 
     p-terraform-redis-cluster-st-service-Db-Mem-UsagePercent = {
@@ -63,7 +63,7 @@ cw_alarms = {
       threshold           = 90
       alarm_description   = "Mem usage percent of redis-pord-st-cluster "
       treat_missing_data  = "missing"
-      CacheClusterId      = "prod-redis-st-prod-001",                                                                                    
+      CacheClusterId      = "test-redis-st-test-001",                                                                                    
       CacheNodeId          = "0001"
     },
     p-terraform-redis-cluster-st-service_FreeableMemory = {
@@ -77,7 +77,7 @@ cw_alarms = {
       threshold           = 1200000000
       alarm_description   = "FreeableMemory of redis-pord-st-cluster "
       treat_missing_data  = "missing"
-      CacheClusterId      = "prod-redis-st-prod-001",                                                                                    
+      CacheClusterId      = "test-redis-st-test-001",                                                                                    
       CacheNodeId          = "0001"
     },
     p-terraform-redis-cluster-st-service_EngineCPUUtilization = {
@@ -91,7 +91,7 @@ cw_alarms = {
       threshold           = 90
       alarm_description   = "CPUUtilization of redis-pord-st-cluster "
       treat_missing_data  = "missing"
-      CacheClusterId      = "prod-redis-st-prod-001",                                                                                    
+      CacheClusterId      = "test-redis-st-test-001",                                                                                    
       CacheNodeId          = "0001"
     },
     p-terraform-redis-cluster-pm_Evictions = {
@@ -105,7 +105,7 @@ cw_alarms = {
       threshold           = 1
       alarm_description   = "Node eviction happened of redis-pord-cluster "
       treat_missing_data  = "missing"
-      CacheClusterId      = "prod-redis-st-prod-001",                                                                                    
+      CacheClusterId      = "test-redis-st-test-001",                                                                                    
       CacheNodeId          = "0001"
     },
 # Redis Cluster Block
@@ -120,7 +120,7 @@ cw_alarms = {
       threshold           = 70
       alarm_description   = "FreeableMemory of redis-pord-st-cluster "
       treat_missing_data  = "missing"
-      CacheClusterId      = "prod-redis-st-prod-001"                                                                                 
+      CacheClusterId      = "test-redis-st-test-001"                                                                                 
     },
     p-terraform-redis-cluster-st-FreeableMemory = {
       comparison_operator = "LessThanThreshold"
@@ -133,7 +133,7 @@ cw_alarms = {
       threshold           = 700
       alarm_description   = "FreeableMemory of redis-pord-st-cluster "
       treat_missing_data  = "missing"
-      CacheClusterId      = "prod-redis-st-prod-001"                                                                                 
+      CacheClusterId      = "test-redis-st-test-001"                                                                                 
     },
     p-terraform-redis-cluster-st-service-CPUUtilization = {
       comparison_operator = "GreaterThanThreshold"
@@ -146,7 +146,7 @@ cw_alarms = {
       threshold           = 70
       alarm_description   = "CPUUtilization of redis-pord-st-cluster "
       treat_missing_data  = "missing"
-      CacheClusterId      = "prod-redis-st-prod-001"                                                                                 
+      CacheClusterId      = "test-redis-st-test-001"                                                                                 
     },
 # RDS Block
     p-terraform-etl-db-instance-master_CPUUtilization = {
@@ -188,7 +188,7 @@ cw_alarms = {
       treat_missing_data  = "missing"                                                                                 
       DBInstanceIdentifier          = "mazu"
     },
-    p-terraform-shuriken_BurstBalance = {
+    p-terraform-xxxxxxxxxxxxx_BurstBalance = {
       comparison_operator = "LessThanOrEqualToThreshold"
       evaluation_periods  = 3
       datapoints_to_alarm = 2
@@ -199,9 +199,9 @@ cw_alarms = {
       threshold           = 95
       alarm_description   = "BurstBalance of RDS"
       treat_missing_data  = "missing"                                                                                 
-      DBInstanceIdentifier          = "shuriken"
+      DBInstanceIdentifier          = "xxxxxxxxxxxxx"
     },
-    p-terraform-microservice-db-ReadIOPS = {
+    p-terraform-xxxxxxxxxxx-db-ReadIOPS = {
       comparison_operator = "GreaterThanOrEqualToThreshold"
       evaluation_periods  = 3
       datapoints_to_alarm = 3
@@ -212,9 +212,9 @@ cw_alarms = {
       threshold           = 1000
       alarm_description   = "ReadIOPS of RDS"
       treat_missing_data  = "missing"                                                                                 
-      DBInstanceIdentifier          = "microservice-db"
+      DBInstanceIdentifier          = "xxxxxxxxxxx-db"
     },
-    p-terraform-microservice-db-WriteIOPS = {
+    p-terraform-xxxxxxxxxxx-db-WriteIOPS = {
       comparison_operator = "GreaterThanOrEqualToThreshold"
       evaluation_periods  = 3
       datapoints_to_alarm = 3
@@ -225,9 +225,9 @@ cw_alarms = {
       threshold           = 1000
       alarm_description   = "WriteIOPS of RDS"
       treat_missing_data  = "missing"                                                                                 
-      DBInstanceIdentifier          = "microservice-db"
+      DBInstanceIdentifier          = "xxxxxxxxxxx-db"
     },
-    p-terraform-microservice-db-OldestReplicationSlotLag = {
+    p-terraform-xxxxxxxxxxx-db-OldestReplicationSlotLag = {
       comparison_operator = "GreaterThanThreshold"
       evaluation_periods  = 3
       datapoints_to_alarm = 2
@@ -238,9 +238,9 @@ cw_alarms = {
       threshold           = 12000000000
       alarm_description   = "OldestReplicationSlotLag of RDS"
       treat_missing_data  = "missing"                                                                                 
-      DBInstanceIdentifier          = "microservice-db"
+      DBInstanceIdentifier          = "xxxxxxxxxxx-db"
     },
-    p-terraform-shuriken-slave-0-db-SwapUsage = {
+    p-terraform-xxxxxxxxxxxxx-slave-0-db-SwapUsage = {
       comparison_operator = "GreaterThanThreshold"
       evaluation_periods  = 4
       datapoints_to_alarm = 4
@@ -251,9 +251,9 @@ cw_alarms = {
       threshold           = 200000000
       alarm_description   = "SwapUsage of RDS"
       treat_missing_data  = "missing"                                                                                 
-      DBInstanceIdentifier          = "shuriken-slave-0"
+      DBInstanceIdentifier          = "xxxxxxxxxxxxx-slave-0"
     },
-    p-terraform-microservice-db-DatabaseConnections = {
+    p-terraform-xxxxxxxxxxx-db-DatabaseConnections = {
       comparison_operator = "GreaterThanThreshold"
       evaluation_periods  = 5
       datapoints_to_alarm = 5
@@ -264,7 +264,7 @@ cw_alarms = {
       threshold           = 800
       alarm_description   = "DatabaseConnections of RDS"
       treat_missing_data  = "breaching"                                                                                 
-      DBInstanceIdentifier          = "microservice-db"
+      DBInstanceIdentifier          = "xxxxxxxxxxx-db"
     },
 ### Kafka Topic 
   p-kafka-consumer_gp_pm-service-SumOffsetLag = {

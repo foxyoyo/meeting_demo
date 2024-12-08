@@ -30,7 +30,7 @@ efs_throu_mode = "bursting"
 efs_encrypted = false
 
 # S3
-# s3_bucket_name = ["aws-waf-logs-xxxxsprod-kr", "xxxx-lab-prod-kr","xxxx-prod-kr-a1c-prediction"]
+# s3_bucket_name = ["aws-waf-logs-xxxxstest-kr", "xxxx-lab-test-kr","xxxx-test-kr-a1c-prediction"]
 s3_bucket_name = ["s3-fox-terraform1", "s3-fox-terraform2"]
 # s3_acl_config  = "private"
 s3_object_ownership = "BucketOwnerEnforced"
@@ -71,11 +71,11 @@ max_allocated_storage = 200
 storage_type = "gp3"
 db_engine_version = "12.11"
 instance_spec = "db.m6g.large"
-parameter_group_name = "prod-au-rds-pg-postgres12-debezium"
-def_db_username = "postgresql"
-def_db_passwd = "55Tcqg7v2ZeakJcg9FOIy66"
+parameter_group_name = "test-au-rds-pg-postgres12-debezium"
+def_db_username = "username"
+def_db_passwd = "xxxxxxxxxxxxxx"
 
-# RDS - MicroService
+# RDS - test
 
 
 # SNS & Lambda
@@ -118,23 +118,23 @@ cw_log_paramters = {
 # ParameterStores
 paramstores = {
 
-  "/prod/xxxx-data/trino/user_name" = {
+  "/test/xxxx-data/trino/user_name" = {
     value       = "xxxxdata"
     secure_type = true
   } 
 
-    "/prod/xxxx-server/openai/token" = {
+    "/test/xxxx-server/openai/token" = {
     value       = "kkkkkkabc123456"
     secure_type = true
   } 
 
-  "/prod/xxxx-data/trino/host" = {
-    description = "prod-jp"
+  "/test/xxxx-data/trino/host" = {
+    description = "test-jp"
     value       = "trino-srv.healtxxxxsync.com"
   }
 
-  "/prod/xxxx-data/trino/port" = {
-    description = "prod-jp"
+  "/test/xxxx-data/trino/port" = {
+    description = "test-jp"
     value       = "443"
   }
 
@@ -142,8 +142,8 @@ paramstores = {
 
 
 ### ACM Domain Name ###
-# domain_name = "healthpass.cc"
-# default_targetgroup = "k8s-kr-prod-xxxxs-nginx"
+# domain_name = "xxxxxxx.cc"
+# default_targetgroup = "k8s-kr-test-xxxxs-nginx"
 
 # Alb 
 # alb_name = "alb"
@@ -151,8 +151,8 @@ paramstores = {
 
 ### TargetGroup 
 # target_groups = {
-#   "k8s-kr-prod-xxxxs-nginx" = {
-#     name        = "k8s-kr-prod-xxxxs-nginx"
+#   "k8s-kr-test-xxxxs-nginx" = {
+#     name        = "k8s-kr-test-xxxxs-nginx"
 #     port        = 80
 #     protocol    = "HTTP"
 #     target_type = "ip"
@@ -167,12 +167,12 @@ paramstores = {
 #       matcher             = "200"
 #     }
 #     tags = {
-#       Environment = "prod-kr"
+#       Environment = "test-kr"
 #       Service     = "nginx"
 #     }
 #   },
-#   "k8s-kr-prod-admin-api" = {
-#     name        = "k8s-kr-prod-admin-api"
+#   "k8s-kr-test-admin-api" = {
+#     name        = "k8s-kr-test-admin-api"
 #     port        = 8400
 #     protocol    = "HTTPS"
 #     target_type = "ip"
@@ -187,12 +187,12 @@ paramstores = {
 #       timeout             = 40
 #     }
 #     tags = {
-#       Environment = "prod-kr"
+#       Environment = "test-kr"
 #       Service     = "admin-api"
 #     }
 #   },
-#   "k8s-kr-prod-xxxxs-apisvc" = {
-#     name        = "k8s-kr-prod-xxxxs-apisvc"
+#   "k8s-kr-test-xxxxs-apisvc" = {
+#     name        = "k8s-kr-test-xxxxs-apisvc"
 #     port        = 8100
 #     protocol    = "HTTPS"
 #     target_type = "ip"
@@ -207,7 +207,7 @@ paramstores = {
 #       timeout             = 30
 #     }
 #     tags = {
-#       Environment = "prod-kr"
+#       Environment = "test-kr"
 #       Service     = "xxxx-api"
 #     }
 #   }
@@ -217,7 +217,7 @@ paramstores = {
 
 # alb_rules = {
 #   100 = {
-#     name = "k8s-kr-prod-xxxxs-nginx"
+#     name = "k8s-kr-test-xxxxs-nginx"
 #     type = "forward"
 #     path_condition= {
 #       path_pattern = [
@@ -229,7 +229,7 @@ paramstores = {
 #     }
 #   },
 #   90 = {
-#     name = "k8s-kr-prod-admin-api"
+#     name = "k8s-kr-test-admin-api"
 #     type = "forward"
 #     path_condition= {
 #       path_pattern = [
@@ -242,7 +242,7 @@ paramstores = {
 #     }
 #   },
 #   80 = {
-#     name = "k8s-kr-prod-xxxxs-apisvc"
+#     name = "k8s-kr-test-xxxxs-apisvc"
 #     type = "forward"
 #     path_condition= {
 #       path_pattern = [
