@@ -25,6 +25,31 @@
                 value: "10"
 ```
 
+# Folder : terrafrom_oneclick
+- 透過 one click 快速 Build出 整個region 下列的AWS infra resource
+
+``` 
+### Phase - I Build UP Basic infra ###
+1 : VPC
+2 : SecurityGroup for EC2
+3 : EC2 - BastionHost (depend_on: iam-role,securitygroup,ami)
+4 : EFS
+5 : S3 
+6 : SNS
+7.1 : SNS - Subscribe's Lambda
+8 : ParameterStore
+9 : Cloudwatch (log )
+10: Cloudwatch (metric-alarm)
+11 : MSK
+12 : RDS (parameter group 手動先建立好，修改參數)
+13 : ElasticCache
+
+### Phase -II (因為需要 Domain ACM 申請關係，只能模擬測試) ###
+14 : SSL
+15 : ALB-TargetGroup
+16 : ALB  + ALB Rule
+```
+
 # Folder : athena_slack , 自己撰寫的python flask api 小工具，用於透過slack BOT 介面，可以快速得知目前prod 環境WAF 狀況，可以產出report / block ip /query status 
 - 透過 help 可以取得指令參數
 
